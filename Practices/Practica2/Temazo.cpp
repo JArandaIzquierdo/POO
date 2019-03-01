@@ -6,8 +6,6 @@
 
 #include "Temazo.h"
 
-Temazo::Temazo() {
-}
 
 Temazo::Temazo(string titulo, string interprete,int duracionEnSegundo, int puntuacionDelPublico){
     this->_titulo = titulo;

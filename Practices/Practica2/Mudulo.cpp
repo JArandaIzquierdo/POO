@@ -13,9 +13,10 @@
 
 #include "Mudulo.h"
 
-namespace Modulo{
 
-    void showTemazo(Temazo temazo){
+    void Modulo::showTemazo(Temazo temazo){
+        cout<<"TEMAZO:"<<endl;
+        
         cout<<"Titulo: ";
         cout<<temazo.getTitulo()<<endl;
         
@@ -27,21 +28,30 @@ namespace Modulo{
         
         cout<<"Puntuacion: ";
         cout<<temazo.getPuntiacionDelPublico()<<endl;
+        
+        cout<<"---------------------"<<endl;
     }
     
-    void showGarito(Garito garito){
+    void Modulo::showGarito(Garito garito){
+        cout<<"GARITO:"<<endl;
+        
         cout<<"Nombre: ";
         cout<<garito.getNombre()<<endl;
         
         cout<<"Direccion: ";
         cout<<garito.getDireccion()<<endl;
+        
+        cout<<"------------------------"<<endl;
     }
     
-    void showFecha(Fecha fecha){
-        cout<<fecha.getDia()<<" - "<<fecha.getMes()<<" - "<<fecha.getAnio()<<endl;
+    //REVISARR!! 
+    void Modulo::showFecha(Fecha fecha){
+        cout<<  fecha.getDia()<<" - "<<
+                fecha.getMes()<<" - "<<
+                fecha.getAnio()<<endl;
     }
     
-    void modifyGarito(Garito& garito){
+    void Modulo::modifyGarito(Garito& garito){
         
         string nombre, direccion;
         
@@ -53,6 +63,7 @@ namespace Modulo{
         
         garito.setNombre(nombre);
         garito.setDireccion(direccion);
+        
+       
                
     }
-}
