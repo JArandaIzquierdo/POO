@@ -7,7 +7,15 @@
 #include "Mudulo.h"
 
 
-    void showTemazo(Temazo temazo){
+
+void showFecha(Fecha& fecha){
+        cout<<  fecha.getDia()<<" - "<<
+                fecha.getMes()<<" - "<<
+                fecha.getAnio()<<endl;
+}
+        
+
+void showTemazo(Temazo temazo){
         
         cout<<endl;
         cout<<"TEMAZO:"<<endl;
@@ -23,6 +31,15 @@
         
         cout<<"Puntuacion: ";
         cout<<temazo.getPuntiacionDelPublico()<<endl;
+        
+        cout<<"Nombre del ultimo garito: ";
+        cout<<temazo.getNombreUltimoGarito()<<endl;
+        
+        cout<<"Fecha de ultimo uso: ";
+        //showFecha( temazo.getFehaUltimoUso() );
+        cout<<  temazo.getFehaUltimoUso().getDia()<<" - "<<
+                temazo.getFehaUltimoUso().getMes()<<" - "<<
+                temazo.getFehaUltimoUso().getAnio()<<endl;
         
         cout<<"---------------------"<<endl;
         cout<<endl;
@@ -40,13 +57,6 @@
         
         cout<<"------------------------"<<endl;
         cout<<endl;
-    }
-    
-    //REVISARR!! 
-    void showFecha(Fecha& fecha){
-        cout<<  fecha.getDia()<<" - "<<
-                fecha.getMes()<<" - "<<
-                fecha.getAnio()<<endl;
     }
     
     void modifyGarito(Garito& garito){

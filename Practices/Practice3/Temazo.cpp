@@ -6,8 +6,9 @@
 
 #include "Temazo.h"
 
-Temazo::Temazo(string titulo, string interprete,int duracionEnSegundo, int puntuacionDelPublico,
-        string nombreUltimoGarito, Fecha fechaUltimoUso):
+Temazo::Temazo(string titulo, string interprete,string nombreUltimoGarito,
+        Fecha fechaUltimoUso,int duracionEnSegundo, int puntuacionDelPublico
+        ):
             _titulo(titulo),
             _interprete(interprete),
             _duracionEnSegundos(duracionEnSegundo),
@@ -16,9 +17,14 @@ Temazo::Temazo(string titulo, string interprete,int duracionEnSegundo, int puntu
             _fechaUltimoUso(fechaUltimoUso)
 {}
 
-Temazo::Temazo(const Temazo& orig) : _titulo(orig._titulo),_interprete(orig._interprete),
-                                     _duracionEnSegundos(orig._duracionEnSegundos),
-                                     _puntuacionDelPublico(orig._puntuacionDelPublico){}
+Temazo::Temazo(const Temazo& orig) : 
+    _titulo(orig._titulo),
+    _interprete(orig._interprete),
+    _duracionEnSegundos(orig._duracionEnSegundos),
+    _puntuacionDelPublico(orig._puntuacionDelPublico),
+    _nombreUltimoGarito(orig._nombreUltimoGarito),
+    _fechaUltimoUso(orig._fechaUltimoUso)
+{}
 
 Temazo::~Temazo() {
     

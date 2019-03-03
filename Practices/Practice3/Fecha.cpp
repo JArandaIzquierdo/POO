@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   Fecha.cpp
  * Author: javierarandaizquierdo
  * 
- * Created on 25 de febrero de 2019, 10:08
  */
 
 #include "Fecha.h"
@@ -57,4 +50,35 @@ int Fecha::getMes(){
 
 int Fecha::getAnio(){
     return _anio;
+}
+
+//Operators
+
+bool Fecha::operator <(const Fecha& otraFecha){
+ 
+    if(_anio > otraFecha._anio)
+        return false;
+    else{
+        if(_anio == otraFecha._anio){
+            if(_mes > otraFecha._mes){
+                return false;
+            }
+            else{
+                if(_mes == otraFecha._mes){
+                    if(_dia > otraFecha._dia)
+                        return false;
+                    if(_dia == otraFecha._dia)
+                        return false;
+                }
+            }
+        }
+    }
+    
+    return true;
+}
+
+
+bool Fecha::operator ==(const Fecha& otraFecha){
+    
+    return _anio == otraFecha._anio && _mes==otraFecha._mes && _dia==otraFecha._dia;
 }

@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   Fecha.h
  * Author: javierarandaizquierdo
  *
- * Created on 25 de febrero de 2019, 10:08
  */
 
 #ifndef FECHA_H
@@ -29,6 +22,14 @@ public:
     int getDia();
     int getMes();
     int getAnio();
+    
+    //Operators
+    bool operator<(const Fecha& otraFecha);
+    bool operator>(const Fecha& otraFecha);
+    bool operator==(const Fecha& otraFecha);
+    bool operator!=(const Fecha& otraFecha);
+    bool operator<=(const Fecha& otraFecha);
+    bool operator>=( const Fecha& otraFecha);
     
 private:
     int _dia;

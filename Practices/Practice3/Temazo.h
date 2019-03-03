@@ -14,8 +14,8 @@ class Temazo {
 public:
     
     Temazo()=default;
-    Temazo(string titulo, string interprete,int duracionEnSegundo=0, int puntuacionDelPublico=0,
-            string nombreUltimoGarito, Fecha fechaUltimoUso);
+    Temazo(string titulo, string interprete,string nombreUltimoGaritoint,
+            Fecha fechaUltimoUso, int duracionEnSegundo=0, int puntuacionDelPublico=0);
     Temazo(const Temazo& orig);
     virtual ~Temazo();
     
