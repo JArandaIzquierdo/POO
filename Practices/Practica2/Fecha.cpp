@@ -23,7 +23,7 @@ Fecha::Fecha() {
 
     //Assign the values to the ...
     this->_dia = ctConverter->tm_mday;
-    this->_mes = ctConverter->tm_mon;
+    this->_mes = ctConverter->tm_mon + 1;
     this->_anio = ctConverter->tm_year + 1900;        
 }
 Fecha::Fecha(int dia, int mes, int anio): _dia(dia),_mes(mes),_anio(anio){

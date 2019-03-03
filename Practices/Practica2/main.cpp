@@ -19,24 +19,38 @@ int main(int argc, char** argv) {
     // Forma de crear un objeto con parametros (el anterior
     //creaba 2 objetos
     Temazo temazo1("Ave Maria","David Bisbal",140,8);
+    Temazo temazoDefecto;
     //Temazo* pT = new Temazo( "xxx");
     //Temazo temazo2 = Temazo();
     
     Garito garito1;
-    Garito garitoCopia (garito1);
+    Garito garitoCopia(garito1);
     
-    Fecha fecha1 ;
+    Fecha fecha1;
     Fecha fecha2(22,4,2018);
     
-    Modulo::showTemazo(temazo1);
     
-    Modulo::showGarito(garito1);
-    Modulo::showGarito(garitoCopia);
+    showTemazo(temazo1);
+    showTemazo(temazoDefecto);
     
-    Modulo::showFecha(fecha1);
-    Modulo::showFecha(fecha2);
+    showGarito(garito1);
+    showGarito(garitoCopia);
     
+    showFecha(fecha1);
+    showFecha(fecha2);
     
+    cout<<"Modifying garitoCopia..."<<endl;
+    
+    try{
+        modifyGarito(garitoCopia);
+    
+        showGarito(garitoCopia);
+        
+        garito1.setNombre("");
+    }
+    catch( string &error ){
+        cerr << error << endl;
+    }
 
     return 0;
 }

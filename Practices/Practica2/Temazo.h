@@ -11,8 +11,9 @@ using namespace std;
 
 class Temazo {
 public:
-  //  Temazo()=default;
-    Temazo(string titulo="Tema", string interprete="musico",int duracionEnSegundo=0, int puntuacionDelPublico=0);
+    //Temazo()= default;
+    Temazo()=default;
+    Temazo(string titulo, string interprete,int duracionEnSegundo=0, int puntuacionDelPublico=0);
     Temazo(const Temazo& orig);
     virtual ~Temazo();
     

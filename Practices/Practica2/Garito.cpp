@@ -16,8 +16,8 @@ Garito::~Garito() {
     
 //Setter methods
 void Garito::setNombre(string nombre){
-    if(nombre == " "){
-        throw string ("El nombre esta vacio");
+    if(nombre == ""){
+        throw string ("The name is empty");
     }
     else{
          this->_nombre = nombre;
@@ -25,7 +25,7 @@ void Garito::setNombre(string nombre){
 };
 
 void Garito::setDireccion(string direccion){
-    if(direccion == " "){
+    if(direccion == ""){
         throw string ("The address is empty");
     }
     else{

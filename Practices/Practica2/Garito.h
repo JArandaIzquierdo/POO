@@ -12,7 +12,7 @@ using namespace std;
 class Garito {
 public:
     
-    Garito(string nombre="Nombre Garito",string direccion="Direccion garito");
+    Garito(string nombre="",string direccion="");
     Garito(const Garito& orig);
     virtual ~Garito();
     

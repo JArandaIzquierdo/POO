@@ -1,20 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   Mudulo.cpp
  * Author: javierarandaizquierdo
  * 
- * Created on 28 de febrero de 2019, 13:19
  */
 
 #include "Mudulo.h"
 
 
-    void Modulo::showTemazo(Temazo temazo){
+    void showTemazo(Temazo temazo){
+        
+        cout<<endl;
         cout<<"TEMAZO:"<<endl;
         
         cout<<"Titulo: ";
@@ -30,9 +25,11 @@
         cout<<temazo.getPuntiacionDelPublico()<<endl;
         
         cout<<"---------------------"<<endl;
+        cout<<endl;
     }
     
-    void Modulo::showGarito(Garito garito){
+    void showGarito(Garito garito){
+        cout<<endl;
         cout<<"GARITO:"<<endl;
         
         cout<<"Nombre: ";
@@ -42,16 +39,17 @@
         cout<<garito.getDireccion()<<endl;
         
         cout<<"------------------------"<<endl;
+        cout<<endl;
     }
     
     //REVISARR!! 
-    void Modulo::showFecha(Fecha fecha){
+    void showFecha(Fecha& fecha){
         cout<<  fecha.getDia()<<" - "<<
                 fecha.getMes()<<" - "<<
                 fecha.getAnio()<<endl;
     }
     
-    void Modulo::modifyGarito(Garito& garito){
+    void modifyGarito(Garito& garito){
         
         string nombre, direccion;
         
@@ -59,11 +57,8 @@
         cin>>nombre;
         
         cout<<"Introduce the new address for the garito: ";
-        cin>>direccion;
+        getline(cin,direccion);
         
         garito.setNombre(nombre);
-        garito.setDireccion(direccion);
-        
-       
-               
+        garito.setDireccion(direccion);    
     }
