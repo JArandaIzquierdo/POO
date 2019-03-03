@@ -53,7 +53,11 @@ int Fecha::getAnio(){
 }
 
 //Operators
-
+/**
+ * Comparamos si una fechar es menor que otra dada
+ * @param otraFecha
+ * @return 
+ */
 bool Fecha::operator <(const Fecha& otraFecha){
  
     if(_anio > otraFecha._anio)
@@ -76,9 +80,87 @@ bool Fecha::operator <(const Fecha& otraFecha){
     
     return true;
 }
-
-
+/**
+ * Comparamos si una fecha es mayor que otra dada
+ * @param otraFecha Fecha con la que comparamos
+ * @return 
+ */
+bool Fecha::operator >(const Fecha& otraFecha){
+    if(_anio < otraFecha._anio)
+        return false;
+    else{
+        if(_anio == otraFecha._anio){
+            if(_mes < otraFecha._mes){
+                return false;
+            }
+            else{
+                if(_mes == otraFecha._mes){
+                    if(_dia < otraFecha._dia)
+                        return false;
+                    if(_dia == otraFecha._dia)
+                        return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+/**
+ * Comparamos si una fecha es igual a otra dada
+ * @param otraFecha
+ * @return 
+ */
 bool Fecha::operator ==(const Fecha& otraFecha){
     
     return _anio == otraFecha._anio && _mes==otraFecha._mes && _dia==otraFecha._dia;
+}
+/**
+ * Comparamos si una fecha es distinta a otra dada
+ * @param otraFecha
+ * @return 
+ */
+bool Fecha::operator !=(const Fecha& otraFecha){
+    
+    return _anio != otraFecha._anio || _mes!=otraFecha._mes || _dia!=otraFecha._dia;
+}
+/**
+ * Comparar si una fecha es menor o igual a otra dada
+ * @param otraFecha
+ * @return 
+ */
+bool Fecha::operator <= (const Fecha& otraFecha){
+ 
+    if(_anio > otraFecha._anio)
+        return false;
+    else{
+        if(_mes > otraFecha._mes)
+                return false;
+        else{
+            if(_dia > otraFecha._dia)
+                        return false;    
+            }
+    }
+    
+    return true;
+}
+
+/**
+ * Comparar si una fecha es mayor o igual a otra dada
+ * @param otraFecha
+ * @return 
+ */
+bool Fecha::operator >= (const Fecha& otraFecha){
+ 
+    if(_anio < otraFecha._anio)
+        return false;
+    else{
+        if(_mes < otraFecha._mes)
+                return false;
+        else{
+            if(_dia < otraFecha._dia)
+                        return false;    
+            }
+    }
+    
+    return true;
 }

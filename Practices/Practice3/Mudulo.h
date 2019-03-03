@@ -13,6 +13,7 @@
 
     
     void showTemazo (Temazo temazo);
+    void showTemazo(Temazo* temazo);
     void showGarito (Garito garito);
     void showFecha (Fecha& fecha);
     void modifyGarito (Garito &garito);

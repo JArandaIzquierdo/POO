@@ -11,95 +11,89 @@
 
 using namespace std;
 
+const int MAX=100;
+
 /*
  * 
  */
-   
-    //Suma de boleanos
-string sumaDeBool(bool boolSuma){
-        if(boolSuma == true)
-            return "True";
-        else
-            return "Fase";
+void mostrarTemazosAnteriores(Temazo temazos[],int tamTemazos, Fecha fecha){
+    for(int i=0; i<10;i++){
+        if (temazos[i].getFehaUltimoUso() < fecha)
+            showTemazo(temazos[i]);
     }
+}
+
 int main(int argc, char** argv) {
     
-    // Forma de crear un objeto con parametros (el anterior
-    //creaba 2 objetos
-//    Temazo temazo1("Ave Maria","David Bisbal",140,8);
-    Temazo temazoDefecto;
-    //Temazo* pT = new Temazo( "xxx");
-    //Temazo temazo2 = Temazo();
+//    // Forma de crear un objeto con parametros (el anterior
+//    //creaba 2 objetos
+    Temazo temazo1("Ave Maria","David Bisbal","El ultimo garito",(2,2,2012),140,8);
+//    Temazo temazoDefecto;
+//    //Temazo* pT = new Temazo( "xxx");
+//    //Temazo temazo2 = Temazo();
+//    
+//    Garito garito1;
+//    Garito garitoCopia(garito1);
+//    
+//    Fecha fecha1;
+//    Fecha fecha2(22,4,2018);
+//    
+//    
+    showTemazo(temazo1);
+//    showTemazo(temazoDefecto);
+//    
+//    showGarito(garito1);
+//    showGarito(garitoCopia);
+//    
+//    showFecha(fecha1);
+//    showFecha(fecha2);
+//    
+//    cout<<"Modifying garitoCopia..."<<endl;
+//    
+//    try{
+//        modifyGarito(garitoCopia);
+//    
+//        showGarito(garitoCopia);
+//        
+//        garito1.setNombre("");
+//    }
+//    catch( string &error ){
+//        cerr << error << endl;
+//    }
     
-    Garito garito1;
-    Garito garitoCopia(garito1);
+    //a) vector de 20 temazos
+    Temazo temazos[20];
     
-    Fecha fecha1;
-    Fecha fecha2(22,4,2018);
+    //b) Puntero que apunta a la casa del DJ
+    Garito* pMiCasa = new Garito ("Casa de Seguismundo","C/ de los DJs, 20");
     
+    //c) Vector de 10 punteros de tipo Garito
+    Garito* garitos[10];
     
-    //showTemazo(temazo1);
-    showTemazo(temazoDefecto);
+    //Inicializacion de los 2 primeros garitos del vector garitos en el HEAP
+    garitos[0] = new Garito("Garito 1 en el vector","Calle de garito 1");
+    garitos[0] = new Garito("Garito 2 en el vector","Calle de garito 2");
     
-    showGarito(garito1);
-    showGarito(garitoCopia);
+    //d) Modificaciones de los 3 primeros temazos
+    temazos[0].setTitulo("Temazo 1");
+    temazos[0].setInterprete("Seguismundo");
+    //temazos[0].setFechaUltimoUso(24,01,1990);// Mi cumpleaños
+    temazos[0].setNombreUltimoGarito("Casa de Seguismundo");// la casa del DJ
     
-    showFecha(fecha1);
-    showFecha(fecha2);
+    temazos[1].setTitulo("Temazo 2");
+    temazos[1].setInterprete("Interprete 2");
+    //temazos[1].setFechaUltimoUso(26,05,2018);//Ultima Champion ganada por el madrid
+    temazos[1].setNombreUltimoGarito("Casa del Madrid");
     
-    cout<<"Modifying garitoCopia..."<<endl;
+    temazos[2].setTitulo("Temazo 3");
+    temazos[2].setInterprete("Interprete 3");
+    //temazos[2].setFechaUltimoUso(6,06,2015);//Ultima Champion ganada por el Barcelona
+    temazos[2].setNombreUltimoGarito("Casa de barcelona");
     
-    try{
-        modifyGarito(garitoCopia);
+    //e) Funcion para mostrar los temazos previos a la fecha dada.
+    Fecha fechaE(1,1,2016);
     
-        showGarito(garitoCopia);
-        
-        garito1.setNombre("");
-    }
-    catch( string &error ){
-        cerr << error << endl;
-    }
-
-    
-    
-    //Suma de boleanos
-     
-    cout<<endl;
-       cout<<endl;
-          cout<<endl;
-             cout<<endl;
-                cout<<endl;
-                
-    
-    cout<<"Valores de suma de bool:"<<endl;
-    
-    bool bool1 = true;
-    bool bool2 = true;
-    bool boolSuma = bool1 + bool2;
-    
-    cout<<"True + True = ";
-    cout<<sumaDeBool(boolSuma)<<endl;
-    
-    bool1 = true;
-    bool2 = false;
-    boolSuma = bool1 + bool2;
-    
-    cout<<"True + False = ";
-    cout<<sumaDeBool(boolSuma)<<endl;
-    
-    bool1 = false;
-    bool2 = true;
-    boolSuma = bool1 + bool2;
-    
-    cout<<"False + True = ";
-    cout<<sumaDeBool(boolSuma)<<endl;
-    
-    bool1 = false;
-    bool2 = false;
-    boolSuma = bool1 + bool2;
-    
-    cout<<"False + False = ";
-    cout<<sumaDeBool(boolSuma)<<endl;
+    mostrarTemazosAnteriores(temazos,10,fechaE);
     
     return 0;
 }

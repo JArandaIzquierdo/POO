@@ -44,7 +44,7 @@ void showTemazo(Temazo temazo){
         cout<<"---------------------"<<endl;
         cout<<endl;
     }
-    
+
     void showGarito(Garito garito){
         cout<<endl;
         cout<<"GARITO:"<<endl;
