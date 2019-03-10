@@ -17,5 +17,6 @@
     void showGarito (Garito garito);
     void showFecha (Fecha& fecha);
     void modifyGarito (Garito &garito);
+    void insertTemazo(Temazo temazos[],int tamTemazos, Temazo &temazo);
     
 #endif /* MUDULO_H */

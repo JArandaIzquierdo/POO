@@ -18,7 +18,7 @@ const int MAX=100;
  */
 void mostrarTemazosAnteriores(Temazo temazos[],int tamTemazos, Fecha fecha){
     for(int i=0; i<10;i++){
-        if (temazos[i].getFehaUltimoUso() < fecha)
+        if (temazos[i].getFechaUltimoUso() < fecha)
             showTemazo(temazos[i]);
     }
 }
@@ -27,9 +27,8 @@ int main(int argc, char** argv) {
     
 //    // Forma de crear un objeto con parametros (el anterior
 //    //creaba 2 objetos
-    Temazo temazo1("Ave Maria","David Bisbal","El ultimo garito",(2,2,2012),140,8);
-//    Temazo temazoDefecto;
-//    //Temazo* pT = new Temazo( "xxx");
+    Temazo temazo1("Ave Maria","David Bisbal","El ultimo garito",Fecha (2,2,2012),140,8);
+    Temazo temazoDefecto;
 //    //Temazo temazo2 = Temazo();
 //    
 //    Garito garito1;
@@ -77,23 +76,25 @@ int main(int argc, char** argv) {
     //d) Modificaciones de los 3 primeros temazos
     temazos[0].setTitulo("Temazo 1");
     temazos[0].setInterprete("Seguismundo");
-    //temazos[0].setFechaUltimoUso(24,01,1990);// Mi cumpleaños
+    temazos[0].setFechaUltimoUso(Fecha(24,01,1990));// Mi cumpleaños
     temazos[0].setNombreUltimoGarito("Casa de Seguismundo");// la casa del DJ
     
     temazos[1].setTitulo("Temazo 2");
     temazos[1].setInterprete("Interprete 2");
-    //temazos[1].setFechaUltimoUso(26,05,2018);//Ultima Champion ganada por el madrid
+    temazos[1].setFechaUltimoUso(Fecha(26,05,2018));//Ultima Champion ganada por el madrid
     temazos[1].setNombreUltimoGarito("Casa del Madrid");
     
     temazos[2].setTitulo("Temazo 3");
     temazos[2].setInterprete("Interprete 3");
-    //temazos[2].setFechaUltimoUso(6,06,2015);//Ultima Champion ganada por el Barcelona
+    temazos[2].setFechaUltimoUso(Fecha(6,06,2015));//Ultima Champion ganada por el Barcelona
     temazos[2].setNombreUltimoGarito("Casa de barcelona");
     
     //e) Funcion para mostrar los temazos previos a la fecha dada.
     Fecha fechaE(1,1,2016);
     
     mostrarTemazosAnteriores(temazos,10,fechaE);
+    
+    delete pMiCasa;
     
     return 0;
 }

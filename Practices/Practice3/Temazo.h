@@ -32,7 +32,11 @@ public:
     int getDuracionEnSegundo();
     int getPuntiacionDelPublico();
     string getNombreUltimoGarito();
-    Fecha getFehaUltimoUso();
+    Fecha& getFechaUltimoUso();
+    
+    //Operators
+    bool operator<( Temazo& otroTemazo);
+    bool operator=( Temazo& otroTemazo);
     
 private:
     

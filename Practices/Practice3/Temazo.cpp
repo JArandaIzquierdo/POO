@@ -74,7 +74,25 @@ string Temazo::getNombreUltimoGarito(){
     return this->_nombreUltimoGarito;
 }
 
-Fecha Temazo::getFehaUltimoUso(){
+Fecha& Temazo::getFechaUltimoUso(){
     return this->_fechaUltimoUso;
 }
 
+//Operators
+bool Temazo::operator<(Temazo& otroTemazo) {
+    if(this->_puntuacionDelPublico == otroTemazo._puntuacionDelPublico)
+        return this->getFechaUltimoUso() < otroTemazo.getFechaUltimoUso();
+    return this->_puntuacionDelPublico < otroTemazo._puntuacionDelPublico;
+}
+
+bool Temazo::operator=( Temazo& otroTemazo) {
+
+    if(this!=&otroTemazo){
+        this->_titulo = otroTemazo._titulo;
+        this->_interprete = otroTemazo._interprete;
+        this->_nombreUltimoGarito = otroTemazo._nombreUltimoGarito;
+        this->_fechaUltimoUso = otroTemazo._fechaUltimoUso;
+        this->_duracionEnSegundos = otroTemazo._duracionEnSegundos;
+        this->_puntuacionDelPublico = otroTemazo._puntuacionDelPublico;
+    }
+}

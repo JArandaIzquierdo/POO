@@ -22,7 +22,11 @@ Fecha::Fecha() {
 Fecha::Fecha(int dia, int mes, int anio): _dia(dia),_mes(mes),_anio(anio){
 }
 
-Fecha::Fecha(const Fecha& orig) {
+Fecha::Fecha(const Fecha& orig):
+    _dia(orig._dia),
+    _mes(orig._mes),
+    _anio(orig._anio)
+{
 }
 
 //Setter
@@ -164,3 +168,13 @@ bool Fecha::operator >= (const Fecha& otraFecha){
     
     return true;
 }
+
+
+bool Fecha::operator=(const Fecha& otraFecha) {
+    if(this!=&otraFecha){
+        this->_dia = otraFecha._dia;
+        this->_mes = otraFecha._mes;
+        this->_anio = otraFecha._anio;
+    }
+}
+

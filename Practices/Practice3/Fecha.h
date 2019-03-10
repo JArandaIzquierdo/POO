@@ -29,7 +29,8 @@ public:
     bool operator==(const Fecha& otraFecha);
     bool operator!=(const Fecha& otraFecha);
     bool operator<=(const Fecha& otraFecha);
-    bool operator>=( const Fecha& otraFecha);
+    bool operator>=(const Fecha& otraFecha);
+    bool operator=(const Fecha& otraFecha);
     
 private:
     int _dia;

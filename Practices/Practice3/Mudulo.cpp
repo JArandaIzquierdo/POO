@@ -36,11 +36,8 @@ void showTemazo(Temazo temazo){
         cout<<temazo.getNombreUltimoGarito()<<endl;
         
         cout<<"Fecha de ultimo uso: ";
-        //showFecha( temazo.getFehaUltimoUso() );
-        cout<<  temazo.getFehaUltimoUso().getDia()<<" - "<<
-                temazo.getFehaUltimoUso().getMes()<<" - "<<
-                temazo.getFehaUltimoUso().getAnio()<<endl;
-        
+        showFecha( temazo.getFechaUltimoUso() );
+//        
         cout<<"---------------------"<<endl;
         cout<<endl;
     }
@@ -71,4 +68,11 @@ void showTemazo(Temazo temazo){
         
         garito.setNombre(nombre);
         garito.setDireccion(direccion);    
+    }
+    
+    void insertTemazo(Temazo temazos[], int tamTemazos, Temazo& temazo){
+        bool insertado= false;
+        for(int i =0;i<tamTemazos || insertado; i++){
+            if (temazos[i]
+        }
     }
