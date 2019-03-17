@@ -5,10 +5,6 @@
 
 #include "ParametroNoValido.h"
 
-ParametroNoValido::ParametroNoValido() {
-
-}
-
 
 ParametroNoValido::ParametroNoValido(string fichero, string funcion, string descripcion):
     _fichero(fichero),
@@ -26,6 +22,12 @@ ParametroNoValido::~ParametroNoValido() {
 }
 
 string ParametroNoValido::queOcurre(){
-    return _fichero +" - "+ _funcion +" - "+ _descripcion;
+    
+    stringstream ss;
+    string result;
+    
+    ss << _fichero << "; "<< _funcion <<"; "<< _descripcion;
+    result = ss.str();
+    return result;
 }
 

@@ -4,6 +4,7 @@
  *
  */
 #include <iostream>
+#include <sstream>
 #include "Fecha.h"
 using namespace std;
 
@@ -12,7 +13,8 @@ using namespace std;
 
 class Temazo {
     
-    int numTemazos=0;
+    static int numTemazos;
+    static int shortestLength;
     
 public:
     
@@ -37,6 +39,7 @@ public:
     string getNombreUltimoGarito();
     Fecha& getFechaUltimoUso();
     int getIdTemazo();
+    int getShortestLength();
     
     //Operators
     bool operator<( Temazo& otroTemazo);

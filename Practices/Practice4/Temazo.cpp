@@ -7,6 +7,9 @@
 #include "Temazo.h"
 #include "ParametroNoValido.h"
 
+int Temazo::numTemazos=0;
+int Temazo::shortestLength=999999999;
+
 Temazo::Temazo(string titulo, string interprete,string nombreUltimoGarito,
         Fecha fechaUltimoUso,int duracionEnSegundo, int puntuacionDelPublico
         ):
@@ -20,6 +23,9 @@ Temazo::Temazo(string titulo, string interprete,string nombreUltimoGarito,
 {
     numTemazos++;
     _idTemazo = numTemazos;
+    if(duracionEnSegundo < shortestLength){
+        shortestLength = duracionEnSegundo;
+    }
 }
 
 Temazo::Temazo(const Temazo& orig) : 
@@ -29,7 +35,10 @@ Temazo::Temazo(const Temazo& orig) :
     _puntuacionDelPublico(orig._puntuacionDelPublico),
     _nombreUltimoGarito(orig._nombreUltimoGarito),
     _fechaUltimoUso(orig._fechaUltimoUso)
-{}
+{
+    numTemazos++;
+    _idTemazo=numTemazos;
+}
 
 Temazo::~Temazo() {
     
@@ -46,6 +55,9 @@ void Temazo::setInterprete(string interprete){
 
 void Temazo::setDuracionEnSegundos(int duracionEnSegundos){
     this->_duracionEnSegundos = duracionEnSegundos;
+    if(duracionEnSegundos < shortestLength ){
+        shortestLength = duracionEnSegundos;
+    }
 }
 
 void Temazo::setNombreUltimoGarito(string nombreUltimoGarito) {
@@ -55,6 +67,9 @@ void Temazo::setNombreUltimoGarito(string nombreUltimoGarito) {
 void Temazo::setFechaUltimoUso(Fecha fechaUltimoUso){
     this->_fechaUltimoUso = fechaUltimoUso;
 }
+
+
+
 
 
 
@@ -87,6 +102,11 @@ int Temazo::getIdTemazo(){
     return this->_idTemazo;
 }
 
+int Temazo::getShortestLength() {
+    return shortestLength;
+}
+
+
 //Operators
 bool Temazo::operator<(Temazo& otroTemazo) {
     if(this->_puntuacionDelPublico == otroTemazo._puntuacionDelPublico)
@@ -106,14 +126,25 @@ bool Temazo::operator=( Temazo& otroTemazo) {
     }
 }
 
-Temazo::incrementarPuntuacion(int points){
-    if(points<-10 || points > 10){
-        throw ParametroNoValido;
+//Metodos
+void Temazo::incrementarPuntuacion(int points){
+    if(points < -10 || points > 10){
+        throw ParametroNoValido("Temazo.cpp","incrementarPuntuacion","Fuera de rango (-10, 10)");
+    }
+    else{
+        _puntuacionDelPublico = _puntuacionDelPublico + points;
     }
 }
 
 string Temazo::toCSV(){
-    return _idTemazo+"; "+_titulo+"; "+_interprete+"; "+
-            _duracionEnSegundos+"; "+_puntuacionDelPublico+"; "+
-            _nombreUltimoGarito+"; "+_fechaUltimoUso;
+    stringstream ss;
+    string result;
+    
+    
+    ss << _idTemazo << "; " << _titulo << "; " << _interprete << "; " <<
+            _duracionEnSegundos << "; " << _puntuacionDelPublico << "; " <<
+            _nombreUltimoGarito << "; " << _fechaUltimoUso.toCSV();
+
+    result = ss.str();
+    return result;
 }

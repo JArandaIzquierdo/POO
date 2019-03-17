@@ -8,13 +8,14 @@
 #define PARAMETRONOVALIDO_H
 
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 #include "ParametroNoValido.h"
 
 class ParametroNoValido {
 public:
-    ParametroNoValido()=default;
+    ParametroNoValido()= default;
     ParametroNoValido(string fichero,string funcion, string descripcion);
     ParametroNoValido(const ParametroNoValido& orig);
     virtual ~ParametroNoValido();

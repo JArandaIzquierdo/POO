@@ -8,10 +8,10 @@
 #include "Garito.h"
 #include "Fecha.h"
 #include "Mudulo.h"
+#include <iostream>
 
 using namespace std;
 
-const int MAX=100;
 
 /*
  * 
@@ -25,80 +25,60 @@ void mostrarTemazosAnteriores(Temazo temazos[],int tamTemazos, Fecha fecha){
 
 int main(int argc, char** argv) {
     
-//    // Forma de crear un objeto con parametros (el anterior
-//    //creaba 2 objetos
-    Temazo temazo1("Ave Maria","David Bisbal","El ultimo garito",Fecha (2,2,2012),140,8);
-    Temazo temazoDefecto;
-//    //Temazo temazo2 = Temazo();
-//    
-//    Garito garito1;
-//    Garito garitoCopia(garito1);
-//    
-//    Fecha fecha1;
-//    Fecha fecha2(22,4,2018);
-//    
-//    
+    /*Codigo para probar las excepciones del metodo incrementarPuntuacion
+    de la clase Temazo*/
+    
+    Temazo temazo1("Temazo1","El Fary", "Garito 1",Fecha(23,3,2017),
+            60,20);
+    
     showTemazo(temazo1);
-//    showTemazo(temazoDefecto);
-//    
-//    showGarito(garito1);
-//    showGarito(garitoCopia);
-//    
-//    showFecha(fecha1);
-//    showFecha(fecha2);
-//    
-//    cout<<"Modifying garitoCopia..."<<endl;
-//    
-//    try{
-//        modifyGarito(garitoCopia);
-//    
-//        showGarito(garitoCopia);
-//        
-//        garito1.setNombre("");
-//    }
-//    catch( string &error ){
-//        cerr << error << endl;
-//    }
     
-    //a) vector de 20 temazos
-   /* Temazo temazos[20];
+    try{
+        temazo1.incrementarPuntuacion(20);
+    }
+    catch(ParametroNoValido &parametro){
+        cout<<parametro.queOcurre()<<endl;
+    }
     
-    //b) Puntero que apunta a la casa del DJ
-    Garito* pMiCasa = new Garito ("Casa de Seguismundo","C/ de los DJs, 20");
+    /*Probar las excepciones de la clase Garito
+     */
     
-    //c) Vector de 10 punteros de tipo Garito
-    Garito* garitos[10];
+    Garito garito1("Garito 1","Direccion 1");
+    try{
+        garito1.setNombre("");
+        garito1.setDireccion("");
+    }
+    catch(ParametroNoValido &excepcion){
+        cout<< excepcion.queOcurre() << endl;
+    }
     
-    //Inicializacion de los 2 primeros garitos del vector garitos en el HEAP
-    garitos[0] = new Garito("Garito 1 en el vector","Calle de garito 1");
-    garitos[0] = new Garito("Garito 2 en el vector","Calle de garito 2");
+    /*6.a) Crear un vector de punturos a 10 Gartos. Crear 2 objetos 
+     * usando los 2 primeros elementos del vector y cambiar su nombre
+     * y direccion.
+     */
     
-    //d) Modificaciones de los 3 primeros temazos
-    temazos[0].setTitulo("Temazo 1");
-    temazos[0].setInterprete("Seguismundo");
-    temazos[0].setFechaUltimoUso(Fecha(24,01,1990));// Mi cumpleaños
-    temazos[0].setNombreUltimoGarito("Casa de Seguismundo");// la casa del DJ   
-    temazos[1].setTitulo("Temazo 2");
-    temazos[1].setInterprete("Interprete 2");
-    temazos[1].setFechaUltimoUso(Fecha(26,05,2018));//Ultima Champion ganada por el madrid
-    temazos[1].setNombreUltimoGarito("Casa del Madrid");
+    Garito *garitos[10];
     
-    temazos[2].setTitulo("Temazo 3");
-    temazos[2].setInterprete("Interprete 3");
-    temazos[2].setFechaUltimoUso(Fecha(6,06,2015));//Ultima Champion ganada por el Barcelona
-    temazos[2].setNombreUltimoGarito("Casa de barcelona");
+    garitos[0]->setDireccion("Calle 0");
+    garitos[0]->setNombre("Garito 1");
     
-    //e) Funcion para mostrar los temazos previos a la fecha dada.
-    Fecha fechaE(1,1,2016);
+    showGarito(*garitos[0]);
     
-    mostrarTemazosAnteriores(temazos,10,fechaE);
+    /* 6.b) Crea un vector de 5 temazos. Modifica los 3 primeros 
+     * con los datos que quieras. Todos los objetos tienen que tener
+     * la puntuacion a 0 y tienen que haber tocado por ultima vez en 
+     * alguno de los garitos del apartado a)
+     */
     
-    delete pMiCasa;
-    */
+    Temazo temazos [5];
     
-    Garito* garitos[10];
-    garitos[0]("garito0","DireccionGarito0");
-    garitos[1]("garito1","DireccionGarito1");
+    temazos[0].setTitulo("A toda mecha");
+    temazos[0].setInterprete("El fary");
+    temazos[0].setDuracionEnSegundos(63);
+    temazos[0].setFechaUltimoUso(Fecha(22,03,2015));
+    temazos[0].setNombreUltimoGarito(garitos[0]->getNombre());
+    
+    showTemazo(temazos[0]);
     
     return 0;
 }

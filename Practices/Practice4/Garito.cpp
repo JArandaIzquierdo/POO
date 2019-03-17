@@ -4,6 +4,7 @@
  */
 
 #include "Garito.h"
+#include "ParametroNoValido.h"
 
 Garito::Garito(string nombre, string direccion): _nombre(nombre),_direccion(direccion){
 }
@@ -17,7 +18,7 @@ Garito::~Garito() {
 //Setter methods
 void Garito::setNombre(string nombre){
     if(nombre == ""){
-        throw ParametroNoValido;
+        throw ParametroNoValido ("Garito.cpp","setNombre","Nombre esta vacio");
     }
     else{
          this->_nombre = nombre;
@@ -26,7 +27,7 @@ void Garito::setNombre(string nombre){
 
 void Garito::setDireccion(string direccion){
     if(direccion == ""){
-        throw ParametroNoValido;
+        throw ParametroNoValido("Garito.cpp","setDireccion","Direccion esta vacio");
     }
     else{
         this->_direccion = direccion;
@@ -43,6 +44,14 @@ string Garito::getDireccion(){
 };
 
 string Garito::toCSV(){
-    return _nombre+"; "+_direccion;
+    
+    stringstream ss;
+    string result;
+    
+    ss <<_nombre<<"; "<<_direccion;
+    
+    result = ss.str();
+    
+    return result;
 }
 

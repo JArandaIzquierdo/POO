@@ -8,8 +8,10 @@
 #define FECHA_H
 
 using namespace std;
+#include<sstream>
 
 class Fecha {
+    
 public:
     Fecha();
     Fecha(int dia, int mes, int anio);
@@ -32,7 +34,7 @@ public:
     bool operator!=(const Fecha& otraFecha);
     bool operator<=(const Fecha& otraFecha);
     bool operator>=(const Fecha& otraFecha);
-    bool operator=(const Fecha& otraFecha);
+    Fecha operator=(const Fecha& otraFecha);
     
     //Methods 
     string toCSV();

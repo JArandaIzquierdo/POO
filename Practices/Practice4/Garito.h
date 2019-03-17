@@ -8,9 +8,12 @@
 
 #include <iostream>
 using namespace std;
+#include "ParametroNoValido.h"
+#include <sstream>
 
 class Garito {
 public:
+    
     
     Garito(string nombre="",string direccion="");
     Garito(const Garito& orig);

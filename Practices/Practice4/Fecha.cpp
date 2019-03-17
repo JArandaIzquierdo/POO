@@ -170,15 +170,23 @@ bool Fecha::operator >= (const Fecha& otraFecha){
 }
 
 
-bool Fecha::operator=(const Fecha& otraFecha) {
+Fecha Fecha::operator=(const Fecha& otraFecha) {
     if(this!=&otraFecha){
         this->_dia = otraFecha._dia;
         this->_mes = otraFecha._mes;
         this->_anio = otraFecha._anio;
     }
+    return *this;
 }
 
 string Fecha::toCSV(){
-    return _anio+"; "+_mes+"; "+_dia;
+    
+    stringstream ss;
+    string result;
+    ss << _anio << "; "<<_mes<<"; "<<_dia;
+    
+    result = ss.str();
+    
+    return result;
 }
 
