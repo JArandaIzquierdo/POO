@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-MacOSX
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-MacOSX
-CND_ARTIFACT_NAME_Debug=p_5_material
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/p_5_material
+CND_ARTIFACT_NAME_Debug=practice5
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/practice5
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-MacOSX/package
-CND_PACKAGE_NAME_Debug=p5material.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/p5material.tar
+CND_PACKAGE_NAME_Debug=practice5.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/practice5.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-MacOSX
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-MacOSX
-CND_ARTIFACT_NAME_Release=p_5_material
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-MacOSX/p_5_material
+CND_ARTIFACT_NAME_Release=practice5
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-MacOSX/practice5
 CND_PACKAGE_DIR_Release=dist/Release/GNU-MacOSX/package
-CND_PACKAGE_NAME_Release=p5material.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-MacOSX/package/p5material.tar
+CND_PACKAGE_NAME_Release=practice5.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-MacOSX/package/practice5.tar
 #
 # include compiler specific variables
 #

@@ -13,8 +13,11 @@ using std::string;
 
 int Droide::_numDroides = 0;
 
-Droide::Droide ( ): Droide ( "", "" )
-{ }
+Droide::Droide ( ): _marca(""),_modelo ("")
+{
+    _numDroides++;
+    _idD = _numDroides;
+}
 
 Droide::Droide ( string marca, string modelo ): _marca (marca), _modelo (modelo)
 {
@@ -75,4 +78,16 @@ Droide& Droide::operator = ( const Droide& otro )
    }
    
    return ( *this );
+}
+
+void Droide::fronCSV(string inputStr) {
+    
+    std::stringstream ss;
+    ss.str(inputStr);
+    
+    ss >> _idD;
+    ss.ignore(1);
+    
+    getline(ss,_marca,';');
+    getline(ss,_modelo,';');
 }

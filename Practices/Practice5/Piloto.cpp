@@ -15,7 +15,10 @@ using std::string;
 int Piloto::_numPilotos = 0;
 
 Piloto::Piloto ( ): Piloto ( "" )
-{ }
+{ 
+    _numPilotos++;
+    _idP = _numPilotos;
+}
 
 Piloto::Piloto ( string nombre ): _nombre (nombre)
 {
@@ -42,7 +45,11 @@ Piloto::~Piloto ( )
  */
 void Piloto::setNumMisiones ( int numMisiones )
 {
-   this->_numMisiones = numMisiones;
+    if(numMisiones == 0){
+        throw std::invalid_argument ("[Piloto::setNumMisiones]:"
+                                     "El numero de moisiones no puedes ser menor que 0");
+    }
+    this->_numMisiones = numMisiones;
 }
 
 int Piloto::getNumMisiones ( ) const
@@ -81,12 +88,18 @@ int Piloto::getIdP ( ) const
  */
 void Piloto::setIncidenciasUltimaMision ( string incidenciasUltimaMision )
 {
-   this->_incidenciasUltimaMision = incidenciasUltimaMision;
+    if(_numMisiones == 0){
+        throw std::invalid_argument("[Piloto::setIncidenciasUltimaMision]:"
+                "El numero de misiones tiene que ser mayor que 0 para tener"
+                "alguna incidencia");
+    }
+    this->_incidenciasUltimaMision = incidenciasUltimaMision;
 }
 
 string Piloto::getIncidenciasUltimaMision ( ) const
 {
-   return _incidenciasUltimaMision;
+    
+    return _incidenciasUltimaMision;
 }
 
 /**
@@ -96,7 +109,12 @@ string Piloto::getIncidenciasUltimaMision ( ) const
  */
 void Piloto::setFechaUltimaMision ( long fechaUltimaMision )
 {
-   this->_fechaUltimaMision = fechaUltimaMision;
+    if(_numMisiones == 0){
+        throw std::invalid_argument ("[Piloto::setFechaUltimaMision: ]"
+                "El numero de misiones tiene que ser mayor que 0 para tener una "
+                "fecha de ultima mision");
+    }
+    this->_fechaUltimaMision = fechaUltimaMision;
 }
 
 /**
@@ -108,6 +126,25 @@ long Piloto::getFechaUltimaMision ( ) const
 {
    return _fechaUltimaMision;
 }
+
+void Piloto::setNave (StarFighter *nave){
+   _nave = nave;
+}
+
+StarFighter* Piloto::getNave() const {
+    return this->_nave;
+}
+
+void Piloto::setAuxiliar(Droide *auxiliar) {
+    _auxiliar = auxiliar;
+}
+
+Droide* Piloto::getAuxiliar() const {
+    return _auxiliar;
+}
+
+
+
 
 string Piloto::toCSV () const
 {
@@ -135,3 +172,50 @@ Piloto& Piloto::operator = ( const Piloto& otro )
    
    return ( *this );
 }
+
+Informe* Piloto::generarInforme() {
+    Informe *nuevoInforme;
+    nuevoInforme->setIdPiloto(_idP);
+    
+    std::stringstream ss;
+    string resultado;
+    
+    ss <<   _nave->getIdSF() << "; "<< 
+            _auxiliar->getIdD() << "; "<<
+            _incidenciasUltimaMision;
+    
+    resultado = ss.str();
+    
+    nuevoInforme->setDatosInforme(resultado);
+    
+    return nuevoInforme;
+}
+
+void Piloto::fromCSV(string inputStr) {
+    
+    std::stringstream ss;
+    ss.str(inputStr);
+    
+    ss >> _idP;
+    ss.ignore(1);
+    
+    getline(ss,_nombre,';');
+    getline(ss,_nacionalidad,';');
+    
+    ss >> _numMisiones;
+    ss.ignore(1);
+    
+    ss >> _fechaUltimaMision;
+    ss.ignore(1);
+    
+    ss >> _incidenciasUltimaMision;
+    ss.ignore(1);
+    
+    ss >> _nave;
+    ss.ignore(1);
+    
+    ss >> _auxiliar;
+    ss.ignore(1);
+            
+}
+

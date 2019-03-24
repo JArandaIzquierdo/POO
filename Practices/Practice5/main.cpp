@@ -40,8 +40,10 @@ int main ( int argc, char** argv )
      .setFechaEstelar (31521231)
      .setDatosInforme ("Sin novedad");
    
-
-    
+//Crear pilotos
+   
+   
+  
    return 0;
 }
 

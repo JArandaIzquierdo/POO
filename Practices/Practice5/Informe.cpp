@@ -16,7 +16,10 @@ long Informe::_numInformes = 0;
 
 Informe::Informe ( ): Informe ( 0 )
                       
-{ }
+{
+   _numInformes++;
+   _idI = _numInformes;
+}
 
 Informe::Informe ( long fecha ): _fechaEstelar(fecha)
 {
@@ -105,3 +108,21 @@ Informe& Informe::operator = ( const Informe& otro )
    
    return ( *this );
 }
+
+void Informe::fromCSV(string inputStr) {
+    
+    std::stringstream ss;
+    ss.str(inputStr);
+    
+    ss >> _idI;
+    ss.ignore(1);
+    
+    ss >> _idPiloto;
+    ss.ignore(1);
+    
+    ss >> _fechaEstelar;
+    ss.ignore(1);
+    
+    getline(ss,_datosInforme,';');
+}
+
