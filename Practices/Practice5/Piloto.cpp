@@ -43,13 +43,15 @@ Piloto::~Piloto ( )
  * @todo Aquí hay que añadir la comprobación del parámetro y lanzar la excepción
  *       correspondiente. El número de misiones no puede ser <= 0
  */
-void Piloto::setNumMisiones ( int numMisiones )
+Piloto& Piloto::setNumMisiones ( int numMisiones )
 {
     if(numMisiones == 0){
         throw std::invalid_argument ("[Piloto::setNumMisiones]:"
                                      "El numero de moisiones no puedes ser menor que 0");
     }
     this->_numMisiones = numMisiones;
+    
+    return (*this);
 }
 
 int Piloto::getNumMisiones ( ) const
@@ -57,9 +59,11 @@ int Piloto::getNumMisiones ( ) const
    return _numMisiones;
 }
 
-void Piloto::setNacionalidad ( string nacionalidad )
+Piloto& Piloto::setNacionalidad ( string nacionalidad )
 {
    this->_nacionalidad = nacionalidad;
+   
+   return (*this);
 }
 
 string Piloto::getNacionalidad ( ) const
@@ -67,9 +71,11 @@ string Piloto::getNacionalidad ( ) const
    return _nacionalidad;
 }
 
-void Piloto::setNombre ( string nombre )
+Piloto& Piloto::setNombre ( string nombre )
 {
    this->_nombre = nombre;
+   
+   return (*this);
 }
 
 string Piloto::getNombre ( ) const
@@ -86,7 +92,7 @@ int Piloto::getIdP ( ) const
  * @todo Si el número de misiones del piloto es 0, no puede tener incidencias;
  *       haz esta comprobación y lanza la excepción correspondiente
  */
-void Piloto::setIncidenciasUltimaMision ( string incidenciasUltimaMision )
+Piloto& Piloto::setIncidenciasUltimaMision ( string incidenciasUltimaMision )
 {
     if(_numMisiones == 0){
         throw std::invalid_argument("[Piloto::setIncidenciasUltimaMision]:"
@@ -94,6 +100,8 @@ void Piloto::setIncidenciasUltimaMision ( string incidenciasUltimaMision )
                 "alguna incidencia");
     }
     this->_incidenciasUltimaMision = incidenciasUltimaMision;
+    
+    return (*this);
 }
 
 string Piloto::getIncidenciasUltimaMision ( ) const
@@ -107,7 +115,7 @@ string Piloto::getIncidenciasUltimaMision ( ) const
  *       última misión; haz esta comprobación y lanza la excepción
  *       correspondiente
  */
-void Piloto::setFechaUltimaMision ( long fechaUltimaMision )
+Piloto& Piloto::setFechaUltimaMision ( long fechaUltimaMision )
 {
     if(_numMisiones == 0){
         throw std::invalid_argument ("[Piloto::setFechaUltimaMision: ]"
@@ -115,6 +123,8 @@ void Piloto::setFechaUltimaMision ( long fechaUltimaMision )
                 "fecha de ultima mision");
     }
     this->_fechaUltimaMision = fechaUltimaMision;
+    
+    return (*this);
 }
 
 /**
@@ -127,16 +137,19 @@ long Piloto::getFechaUltimaMision ( ) const
    return _fechaUltimaMision;
 }
 
-void Piloto::setNave (StarFighter *nave){
+Piloto& Piloto::setNave (StarFighter *nave){
    _nave = nave;
+   return (*this);
 }
 
 StarFighter* Piloto::getNave() const {
     return this->_nave;
 }
 
-void Piloto::setAuxiliar(Droide *auxiliar) {
+Piloto& Piloto::setAuxiliar(Droide *auxiliar) {
     _auxiliar = auxiliar;
+    
+    return (*this);
 }
 
 Droide* Piloto::getAuxiliar() const {
@@ -196,7 +209,7 @@ void Piloto::fromCSV(string inputStr) {
     std::stringstream ss;
     ss.str(inputStr);
     
-    ss >> _idP;
+    ss>>_idP;
     ss.ignore(1);
     
     getline(ss,_nombre,';');
@@ -211,11 +224,11 @@ void Piloto::fromCSV(string inputStr) {
     ss >> _incidenciasUltimaMision;
     ss.ignore(1);
     
-    ss >> _nave;
-    ss.ignore(1);
-    
-    ss >> _auxiliar;
-    ss.ignore(1);
+//    ss >> *_nave;
+//    ss.ignore(1);
+//    
+//    ss >> *_auxiliar;
+//    ss.ignore(1);
             
 }
 

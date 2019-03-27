@@ -8,8 +8,11 @@
 
 #include <cstdlib>
 #include <string>
+#include<iostream>
 
 #include "Informe.h"
+#include "Piloto.h"
+#include "Droide.h"
 
 using namespace std;
 
@@ -40,8 +43,14 @@ int main ( int argc, char** argv )
      .setFechaEstelar (31521231)
      .setDatosInforme ("Sin novedad");
    
-//Crear pilotos
+// Usar el metodo fromCSV
    
+   Piloto pilotos[5];
+   for ( int i=0; i<5;i++){
+       pilotos[i].fromCSV(datosPilotos[i]);
+   }
+   
+   cout<<"Nombre: "<< pilotos[0].getNombre();
    
   
    return 0;

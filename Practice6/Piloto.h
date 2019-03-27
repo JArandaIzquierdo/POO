@@ -1,6 +1,6 @@
 /** 
  * @file Piloto.h
- * @author Yoyapro Gramo
+ * @author Casipro Gramo
  *
  * @date Fecha estelar 20160309
  */
@@ -12,6 +12,7 @@
 #include "StarFighter.h"
 #include "Droide.h"
 #include "Informe.h"
+
 
 /**
  * @brief
@@ -26,40 +27,32 @@ class Piloto
       int _numMisiones = 0;        ///< Número de misiones en que ha participado
       long _fechaUltimaMision = 0;        ///< Fecha estelar de su última misión
       std::string _incidenciasUltimaMision; ///< Incidencias reportadas por el piloto en su última misión.
-      StarFighter *_nave;
-      Droide *_auxiliar;
-      
+      StarFighter *_nave = nullptr;
+      Droide *_auxiliar = nullptr;
    public:
       Piloto ( );
       Piloto ( std::string nombre );
       Piloto ( const Piloto& orig );
       virtual ~Piloto ( );
-      
-      //Setter
       Piloto& setNumMisiones ( int numMisiones );
-      Piloto& setNacionalidad ( std::string nacionalidad );
-      Piloto& setNombre ( std::string nombre );
-      Piloto& setIncidenciasUltimaMision ( std::string incidenciasUltimaMision );
-      Piloto& setFechaUltimaMision ( long fechaUltimaMision );
-      Piloto& setNave (StarFighter *nave);
-      Piloto& setAuxiliar (Droide *auxiliar);
-      
-      //Getter
       int getNumMisiones ( ) const;
+      Piloto& setNacionalidad ( std::string nacionalidad );
       std::string getNacionalidad ( ) const;
+      Piloto& setNombre ( std::string nombre );
       std::string getNombre ( ) const;
       int getIdP ( ) const;
+      Piloto& setIncidenciasUltimaMision ( std::string incidenciasUltimaMision );
       std::string getIncidenciasUltimaMision ( ) const;
+      Piloto& setFechaUltimaMision ( long fechaUltimaMision );
       long getFechaUltimaMision ( ) const;
-      StarFighter* getNave () const;
-      Droide* getAuxiliar () const;      
-     
-      //Methods
       std::string toCSV () const;
       Piloto& operator= ( const Piloto& otro );
-      Informe *generarInforme();
-      void  fromCSV(std::string csv);
-      
+      Piloto& setNave ( StarFighter* nave );
+      StarFighter* getNave ( ) const;
+      Piloto& setAuxiliar ( Droide* auxiliar );
+      Droide* getAuxiliar ( ) const;
+      Informe generaInforme ();
+      void fromCSV ( std::string& datos );
 };
 
 #endif /* PILOTO_H */

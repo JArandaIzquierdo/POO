@@ -14,38 +14,34 @@ using std::string;
 
 long Informe::_numInformes = 0;
 
-Informe::Informe ( ): Informe ( 0 )
-                      
+Informe::Informe ( ): Informe ( 0 ) {   
+}
+
+Informe::Informe (long fecha ):
+    _fechaEstelar(fecha)
 {
+    setFechaEstelar(fecha); // Lanza excepción si fecha no válida
+
    _numInformes++;
    _idI = _numInformes;
 }
 
-Informe::Informe ( long fecha ): _fechaEstelar(fecha)
+Informe::Informe ( const Informe& orig ):
+    _idPiloto(orig._idPiloto),
+    _fechaEstelar(orig._fechaEstelar),
+    _datosInforme(orig._datosInforme)
 {
-   _numInformes++;
-   _idI = _numInformes;
-}
-
-Informe::Informe ( const Informe& orig ): _idPiloto(orig._idPiloto),
-                                          _fechaEstelar(orig._fechaEstelar),
-                                          _datosInforme(orig._datosInforme)
-{
-   _numInformes++;
-   _idI = _numInformes;
 }
 
 Informe::~Informe ( )
 {
 }
 
-//Setter and Getter
-
 Informe& Informe::setDatosInforme ( string datosInforme )
 {
    this->_datosInforme = datosInforme;
    
-   return ( *this );
+   return *this;
 }
 
 string Informe::getDatosInforme ( ) const
@@ -58,9 +54,10 @@ string Informe::getDatosInforme ( ) const
  */
 Informe& Informe::setFechaEstelar ( long fechaEstelar )
 {
-   this->_fechaEstelar = fechaEstelar;
 
-   return ( *this );
+    this->_fechaEstelar = fechaEstelar;
+
+   return *this;
 }
 
 long Informe::getFechaEstelar ( ) const
@@ -73,9 +70,15 @@ long Informe::getFechaEstelar ( ) const
  */
 Informe& Informe::setIdPiloto ( int idPiloto )
 {
-   this->_idPiloto = idPiloto;
+  if ( idPiloto < 0 )
+   {
+      throw std::invalid_argument ( "Informe::Informe: el identificador del"
+                                    " piloto no puede ser negativo" );
+   }
    
-   return ( *this );
+  this->_idPiloto = idPiloto;
+   
+   return *this;
 }
 
 int Informe::getIdPiloto ( ) const
@@ -96,7 +99,7 @@ string Informe::toCSV () const
        << "id de piloto: " << _idPiloto << " ; "
        << _datosInforme;
 
-   return ( aux.str () );
+   return aux.str();
 }
 
 Informe& Informe::operator = ( const Informe& otro )
@@ -108,23 +111,5 @@ Informe& Informe::operator = ( const Informe& otro )
       _datosInforme = otro._datosInforme;
    }
    
-   return ( *this );
+   return  *this ;
 }
-
-void Informe::fromCSV(string inputStr) {
-    
-    std::stringstream ss;
-    ss.str(inputStr);
-    
-    ss >> _idI;
-    ss.ignore(1);
-    
-    ss >> _idPiloto;
-    ss.ignore(1);
-    
-    ss >> _fechaEstelar;
-    ss.ignore(1);
-    
-    getline(ss,_datosInforme,';');
-}
-

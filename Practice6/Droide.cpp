@@ -13,10 +13,7 @@ using std::string;
 
 int Droide::_numDroides = 0;
 
-Droide::Droide ( ): _marca(""),_modelo ("")
-{
-    _numDroides++;
-    _idD = _numDroides;
+Droide::Droide ( ): Droide ( "", "" ) {
 }
 
 Droide::Droide ( string marca, string modelo ): _marca (marca), _modelo (modelo)
@@ -25,16 +22,11 @@ Droide::Droide ( string marca, string modelo ): _marca (marca), _modelo (modelo)
    _idD = _numDroides;
 }
 
-Droide::Droide ( const Droide& orig ): _marca(orig._marca), _modelo(orig._modelo)
-{
-   _numDroides++;
-   _idD = _numDroides;
+Droide::Droide ( const Droide& orig ): Droide(orig._marca, orig._modelo) {
 }
 
-Droide::~Droide ( )
-{ }
-
-//Setter and Getter
+Droide::~Droide ( ) {
+}
 
 int Droide::getIdD ( ) const
 {
@@ -44,7 +36,7 @@ int Droide::getIdD ( ) const
 Droide& Droide::setModelo ( string modelo )
 {
    this->_modelo = modelo;
-   return (*this);
+   return *this;
 }
 
 string Droide::getModelo ( ) const
@@ -55,7 +47,7 @@ string Droide::getModelo ( ) const
 Droide& Droide::setMarca ( string marca )
 {
    this->_marca = marca;
-   return (*this);
+   return *this;
 }
 
 string Droide::getMarca ( ) const
@@ -70,7 +62,7 @@ string Droide::toCSV () const
    aux << _marca << " ; "
        << _modelo;
 
-   return ( aux.str () );
+   return  aux.str ();
 }
 
 Droide& Droide::operator = ( const Droide& otro )
@@ -81,17 +73,15 @@ Droide& Droide::operator = ( const Droide& otro )
       _modelo = otro._modelo;
    }
    
-   return ( *this );
+   return *this ;
 }
 
-void Droide::fromCSV(string inputStr) {
-    
-    std::stringstream ss;
-    ss.str(inputStr);
-    
-    ss >> _idD;
-    ss.ignore(1);
-    
-    getline(ss,_marca,';');
-    getline(ss,_modelo,';');
+void Droide::fromCSV ( string& datos )
+{
+   std::stringstream aux;
+
+   aux << datos;
+
+   getline ( aux, this->_marca, ';' );
+   getline ( aux, this->_modelo, ';' );
 }
