@@ -149,3 +149,11 @@ void StarFighter::removePieza(string nombre) {
         _piezas[_numeroPiezas-1]=nullptr;
     }
 }
+
+float StarFighter::calculaPeso() {
+    float pesoTotal=0;
+    for(int i=0;i<_numeroPiezas;i++){
+        pesoTotal = pesoTotal + _piezas[i]->getPeso();
+    }
+    return pesoTotal;
+}

@@ -48,6 +48,9 @@ class StarFighter
       
       //Eliminar pieza
       void removePieza(string nombre);
+      
+      //CalculaPeso
+      float calculaPeso();
 };
 
 #endif /* STARFIGHTER_H */
