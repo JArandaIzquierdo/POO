@@ -33,7 +33,10 @@ Fecha::Fecha(const Fecha& orig):
 void Fecha::setDia(int dia){
     this->_dia = dia;
 }
-
+/**
+ * Este metodo inserta el mes de la fecha
+ * @param mes .....
+ */
 void Fecha::setMes(int mes){
     this->_mes = mes;
 }
@@ -48,6 +51,10 @@ int Fecha::getDia(){
     return _dia;
 }
 
+/**
+ * 
+ * @return 
+ */
 int Fecha::getMes(){
     return _mes;
 }

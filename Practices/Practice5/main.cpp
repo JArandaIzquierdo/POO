@@ -43,16 +43,43 @@ int main ( int argc, char** argv )
      .setFechaEstelar (31521231)
      .setDatosInforme ("Sin novedad");
    
-// Usar el metodo fromCSV
+// Usar el metodo fromCSV de la clase piloto
    
    Piloto pilotos[5];
    for ( int i=0; i<5;i++){
        pilotos[i].fromCSV(datosPilotos[i]);
    }
    
-   cout<<"Nombre: "<< pilotos[0].getNombre();
-   
+//Usar el metodo fromCSV de la clase StarFither
+   StarFighter starFighters[5];
+   for(int i=0;i<5;i++){
+       starFighters[i].fromCSV(datosNaves[i]);
+   }
   
-   return 0;
-}
+//Usar el metodo fromCSV de la clase Droide
+   Droide droides[5];
+   for(int i=0; i<5;i++){
+       droides[i].fromCSV(datosDroides[i]);
+   }
+   
+   
+//The first pilot is associated to the third droid and 
+//the second starfighter
+pilotos[0].setNave(&starFighters[1]);
+pilotos[0].setAuxiliar(&droides[2]);
 
+//The second pilot is associated to the first droid and 
+//the fourth starfighter
+pilotos[1].setAuxiliar(&droides[0]);
+pilotos[1].setNave(starFighters[3]);
+
+//The third pilot is associated to the second droid and 
+//the first starfighter
+pilotos[2].setAuxiliar(&droides[1]);
+pilotos[2].setNave(&starFighters[0]);   
+
+//The reports for the last mission of the two first pilots 
+//are created
+
+    return 0;
+}

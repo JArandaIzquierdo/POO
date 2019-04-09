@@ -17,8 +17,9 @@ int StarFighter::_numStarFighters = 0;
 StarFighter::StarFighter ( ): StarFighter ( "", "" )
 { }
 
-StarFighter::StarFighter ( string marca, string modelo ): _marca (marca),
-                                                          _modelo(modelo)
+StarFighter::StarFighter ( string marca, string modelo ):
+    _marca (marca),
+    _modelo(modelo)
 {
    _numStarFighters++;
    _idSF = _numStarFighters;
@@ -95,4 +96,15 @@ StarFighter& StarFighter::operator = (const StarFighter& otro)
    }
    
    return ( *this );
+}
+
+StarFighter StarFighter::fromCSV(std::string cadena) {
+    std::stringstream ss;
+    ss.str(cadena);
+    
+    getline(ss,_marca,';');
+    getline(ss,_modelo,';');
+    
+    ss >> _numPlazas;
+    ss.ignore(1); 
 }

@@ -209,9 +209,6 @@ void Piloto::fromCSV(string inputStr) {
     std::stringstream ss;
     ss.str(inputStr);
     
-    ss>>_idP;
-    ss.ignore(1);
-    
     getline(ss,_nombre,';');
     getline(ss,_nacionalidad,';');
     
@@ -221,14 +218,8 @@ void Piloto::fromCSV(string inputStr) {
     ss >> _fechaUltimaMision;
     ss.ignore(1);
     
-    ss >> _incidenciasUltimaMision;
-    ss.ignore(1);
-    
-//    ss >> *_nave;
-//    ss.ignore(1);
-//    
-//    ss >> *_auxiliar;
-//    ss.ignore(1);
+    getline(ss,_incidenciasUltimaMision);
+  
             
 }
 

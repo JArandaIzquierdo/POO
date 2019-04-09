@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Droide.o \
+	${OBJECTDIR}/Escuadron.o \
 	${OBJECTDIR}/Informe.o \
 	${OBJECTDIR}/Pieza.o \
 	${OBJECTDIR}/Piloto.o \
@@ -71,6 +72,11 @@ ${OBJECTDIR}/Droide.o: Droide.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Droide.o Droide.cpp
+
+${OBJECTDIR}/Escuadron.o: Escuadron.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Escuadron.o Escuadron.cpp
 
 ${OBJECTDIR}/Informe.o: Informe.cpp
 	${MKDIR} -p ${OBJECTDIR}

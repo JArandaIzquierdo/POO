@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
         garito1.setDireccion("");
     }
     catch(ParametroNoValido &excepcion){
-        cout<< excepcion.queOcurre() << endl;
+        cerr<< excepcion.queOcurre() << endl;
     }
     
     /*6.a) Crear un vector de punturos a 10 Gartos. Crear 2 objetos 
@@ -59,8 +59,12 @@ int main(int argc, char** argv) {
     
     Garito *garitos[10];
     
+    garitos[0]= new Garito();
     garitos[0]->setDireccion("Calle 0");
-    garitos[0]->setNombre("Garito 1");
+    
+    garitos[0] = new Garito();
+    garitos[0]->setNombre("Nombre Garito 1");
+    
     
     showGarito(*garitos[0]);
     
@@ -79,6 +83,7 @@ int main(int argc, char** argv) {
     temazos[0].setNombreUltimoGarito(garitos[0]->getNombre());
     
     showTemazo(temazos[0]);
+
     
     return 0;
 }

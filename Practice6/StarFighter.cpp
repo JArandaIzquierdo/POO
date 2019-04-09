@@ -14,14 +14,18 @@ using std::string;
 
 int StarFighter::_numStarFighters = 0;
 
-StarFighter::StarFighter ( ): StarFighter ( "", "" ) {
+StarFighter::StarFighter ( ): StarFighter ( "", "") {
 }
 
-StarFighter::StarFighter ( string marca, string modelo ):
-                           _marca (marca), _modelo(modelo)
+StarFighter::StarFighter ( string marca, string modelo):
+                           _marca (marca), _modelo(modelo),_numeroPiezas(0)
 {
    _numStarFighters++;
    _idSF = _numStarFighters;
+   
+   for(int i=0;i<MAX_PIEZAS;i++){
+       _piezas[i]=nullptr;
+   }
 }
 
 StarFighter::StarFighter ( const StarFighter& orig ):
@@ -30,10 +34,18 @@ StarFighter::StarFighter ( const StarFighter& orig ):
 {
    _numStarFighters++;
    _idSF = _numStarFighters;
+   
+   for (int i=0;i<orig._numeroPiezas;i++){
+       _piezas[i]=new Pieza(orig._piezas[i]);
+   }
 }
 
 StarFighter::~StarFighter ( )
 {
+    for(int i=0; i<_numeroPiezas;i++){
+        delete _piezas[i];
+        _piezas[i]=nullptr;
+    }
 }
 
 /**
@@ -116,4 +128,24 @@ void StarFighter::fromCSV (string& datos)
    getline ( aux, _marca, ';' );
    getline ( aux, _modelo, ';' );
    aux >> _numPlazas;
+}
+
+void StarFighter::addPieza(std::string nombre, float peso, std::string descripcion ) {
+    if(_numeroPiezas == MAX_PIEZAS){
+        throw std::length_error("StarFighter::addPieza: la nave no puede tener "
+                                "mas piezas");
+    }
+    _piezas[_numeroPiezas]=new Pieza(nombre,peso,descripcion);
+    _numeroPiezas++;
+}
+
+void StarFighter::removePieza(string nombre) {
+    for(int i=0; i<_numeroPiezas;i++){
+        if(_piezas[i]->getNombre()== nombre){
+            delete _piezas[i];
+            _piezas[i]=nullptr;
+        }
+        _piezas[i]=_piezas[_numeroPiezas-1];
+        _piezas[_numeroPiezas-1]=nullptr;
+    }
 }

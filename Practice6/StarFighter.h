@@ -9,6 +9,7 @@
 #define STARFIGHTER_H
 
 #include <string>
+#include <Pieza.h>
 
 /**
  * @brief
@@ -21,8 +22,12 @@ class StarFighter
       std::string _marca; ///< Marca de la nave (parece que las VW contaminan más)
       std::string _modelo; ///< Modelo de la nava
       int _numPlazas = 1; ///< Número de plazas de la nave
+      Pieza *_piezas[MAX_PIEZAS];
+      int _numeroPiezas=0;
 
    public:
+      static const int MAX_PIEZAS = 50; 
+      
       StarFighter ();
       StarFighter ( std::string marca, std::string modelo );
       StarFighter ( const StarFighter& orig );
@@ -37,6 +42,12 @@ class StarFighter
       std::string toCSV () const;
       StarFighter& operator= ( const StarFighter& otro );
       void fromCSV ( std::string& datos );
+      
+      //Añadir pieza
+      void addPieza(string nombre, int peso, string descripcion);
+      
+      //Eliminar pieza
+      void removePieza(string nombre);
 };
 
 #endif /* STARFIGHTER_H */
