@@ -6,12 +6,14 @@
 #include "Piloto.h"
 #include <string>
 
+using namespace std;
+
 class Escuadron {
 public:
     static const int _MAX_PILOTOS=50;
     
     Escuadron();
-    Escuadron(std::string nombre, std::string base, int numeroPilotos);
+    Escuadron(std::string nombre, std::string base);
     Escuadron(const Escuadron& orig);
     virtual ~Escuadron();
     

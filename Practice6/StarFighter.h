@@ -9,13 +9,17 @@
 #define STARFIGHTER_H
 
 #include <string>
-#include <Pieza.h>
+#include "Pieza.h"
+
+using namespace std;
 
 /**
  * @brief
  */
 class StarFighter
 {
+   static const int MAX_PIEZAS = 50;  
+    
    private:
       static int _numStarFighters; ///< Número de objetos de esta clase instanciados
       int _idSF=0; ///< Identificador único de la nave
@@ -26,7 +30,6 @@ class StarFighter
       int _numeroPiezas=0;
 
    public:
-      static const int MAX_PIEZAS = 50; 
       
       StarFighter ();
       StarFighter ( std::string marca, std::string modelo );
@@ -44,7 +47,7 @@ class StarFighter
       void fromCSV ( std::string& datos );
       
       //Añadir pieza
-      void addPieza(string nombre, int peso, string descripcion);
+      void addPieza(string nombre, float peso, string descripcion);
       
       //Eliminar pieza
       void removePieza(string nombre);

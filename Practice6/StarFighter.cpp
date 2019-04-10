@@ -36,7 +36,7 @@ StarFighter::StarFighter ( const StarFighter& orig ):
    _idSF = _numStarFighters;
    
    for (int i=0;i<orig._numeroPiezas;i++){
-       _piezas[i]=new Pieza(orig._piezas[i]);
+       _piezas[i]=new Pieza(*orig._piezas[i]);
    }
 }
 
