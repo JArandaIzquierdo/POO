@@ -69,6 +69,15 @@ void Escuadron::deletePiloto(string nombre) {
     _numPilotos--;
 }
 
+double Escuadron::promedioMisiones() {
+    double media;
+    for(int i=0;i<_numPilotos;i++){
+        media = media +_pilotos[i]->getNumMisiones();
+    }
+    media = media/_numPilotos;
+    return media;
+}
+
 
 
 

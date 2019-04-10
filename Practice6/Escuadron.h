@@ -28,6 +28,10 @@ public:
     
     //Eliminar piloto
     void deletePiloto(string nombre);
+    
+    //Metodo promedioMisiones()
+    double promedioMisiones();
+    
 private:
     std::string _nombre;
     std::string _base;
