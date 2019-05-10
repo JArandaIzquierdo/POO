@@ -18,7 +18,10 @@ StarFighter::StarFighter ( ): StarFighter ( "", "") {
 }
 
 StarFighter::StarFighter ( string marca, string modelo):
-                           _marca (marca), _modelo(modelo),_numeroPiezas(0)
+    
+    _marca (marca), 
+    _modelo(modelo),
+    _numeroPiezas(0)
 {
    _numStarFighters++;
    _idSF = _numStarFighters;
@@ -29,7 +32,8 @@ StarFighter::StarFighter ( string marca, string modelo):
 }
 
 StarFighter::StarFighter ( const StarFighter& orig ):
-    _marca(orig._marca),_modelo(orig._modelo),
+    _marca(orig._marca),
+    _modelo(orig._modelo),
     _numPlazas(orig._numPlazas)
 {
    _numStarFighters++;

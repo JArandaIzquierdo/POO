@@ -54,7 +54,7 @@ void Escuadron::addPiloto(Piloto* p) {
         throw std::length_error ("Escuadron::addPiloto: No se pueden añadir"
                                 "mas pilotos a este escuadron");
     }
-    _pilotos[_numPilotos]= p;
+    _pilotos[_numPilotos] = p;
     _numPilotos++;
 }
 
